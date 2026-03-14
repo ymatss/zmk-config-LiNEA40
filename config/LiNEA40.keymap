@@ -7,6 +7,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors/runtime-input-processor.dtsi>
 
 #define MOUSE 1
 #define MARK 2
@@ -46,6 +47,8 @@
 };
 
 &msc_input_listener {
+    input-processors = <&scroll_runtime_input_processor>;
+    
     speed_up {
         layers = <FUNCTION>;
         input-processors = <&zip_wheel_scaler 3 1>; //スクロールを3倍速にする
@@ -53,6 +56,8 @@
 };
 
 &trackball_listener {
+    input-processors = <&mouse_runtime_input_processor>;
+    
     scroller {
         layers = <SCROLL>;
         input-processors =
